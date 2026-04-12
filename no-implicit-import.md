@@ -33,12 +33,17 @@ we could do
 ```cpp
 // Translation unit #4
 module M;
+// uses nothing from partition :P2
 ...
 
 // Translation unit #5
 module M;
+// uses nothing from partition :P2
 ...
 ```
+
+*Note: Translation units `#4` and `#5` do not use any declarations from
+partition `:P2`*
 
 The problem with this is, that if the partition unit `:P2` is modified,
 translation units `#4` and `#5` also need to be recompiled, because they
