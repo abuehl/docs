@@ -41,7 +41,7 @@ import :P1;
 ...
 ```
 
-The problem with this is, that if the partition unit of `:P2` is modified,
+The problem with this is, that if the partition unit `:P2` is modified,
 translation units `#4` and `#5` also need to be recompiled, because they
 both implicitly import TU `#3`, even though `:P2` is not imported neither
 in TU `#4` nor TU `#5`.
