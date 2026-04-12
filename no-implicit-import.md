@@ -53,7 +53,7 @@ in TU `#4` nor TU `#5`.
 For small toy projects this may be acceptable, but this approach clearly
 doesn't scale, because it causes unneeded recompilations.
 
-An alternative is to use "internal partitions"
+An alternative is to use "internal partitions":
 
 ```cpp
 // Translation unit #6
