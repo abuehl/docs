@@ -1,6 +1,6 @@
 # C++ Modules: Module Units shouldn't implicitly import anything
 
-Currently, the C++ standard states, that an implementation unit of module M
+Currently, the C++ standard states, that an implementation unit of module `M`
 
 ```cpp
 // Translation unit #1
@@ -16,7 +16,7 @@ export module M;
 ...
 ```
 
-This is a problem when we want to split the interface into partitions
+This presents a problem when we want to split the interface into partitions
 
 ```cpp
 // Translation unit #3
@@ -42,13 +42,15 @@ import :P1;
 ...
 ```
 
-The problem with this is, that if the partition unit of :P2 is modified,
-translation units #4 and #5 also need to be recompiled, because they
+The problem with this is, that if the partition unit of `:P2` is modified,
+translation units `#4` and `#5` also need to be recompiled, because they
 both implicitly import TU #3, even though :P2 is not imported neither
-in TU #4 nor TU #5. For small toy examples this may be acceptable, but
-the approach doesn't scale and results in unneeded recompilations.
+in TU `#4` nor TU `#5`.
 
-An alternative is the use "internal partitions"
+For small toy projects this may be acceptable, but this approach clearly
+doesn't scale because it causes unneeded recompilations.
+
+An alternative is to use "internal partitions"
 
 ```cpp
 // Translation unit #6
@@ -65,20 +67,20 @@ import :P1;
 Note that partitions `:impl.P1.A`  and `:impl.P1.B` aren't imported anywhere. 
 
 Using this pattern avoids unneeded recompilations, but it adds the following
-problems:
+new problems:
 
 1. The build creates unused BMI files
-2. Each partition needs a separate name
+2. Each partition needs a unique name, despite not being used anywhere
 
-Item #2 imposes an obligation to the programmer to choose and maintain arbitrary
+Item `#2` imposes an obligation to the programmer to choose and maintain arbitrary
 names. Compilers are not required to diagnose accidental name clashes. Readers
-of this kind of code aren't strictly immediately aware that those partitions
-aren't intended to be imported anywhere.
+of this kind of code aren't immediately aware that those partitions
+aren't intended to be imported anywhere. So this pattern is noisy to read.
 
-Basically, internal partitions in this case are only used, because they do
-not implicitly import anything.
+Basically, the sole reason to use internal partitions here is, because
+they do not implicitly import anything.
 
-There have been discussions to add yet another type of partition using for
+There have been discussions to add yet another type of partition, using for
 example the follwoing syntax:
 
 ```cpp
@@ -87,35 +89,38 @@ module M:;
 ...
 ```
 
-The semantic of this would be an internal partition that doens't have a name
-(an anoymous partition).
+This would be an internal partition that doens't have a name (an anoymous
+partition).
 
-Basically this would add a kludge to the standard, on top of another kludge.
+Basically this would add a kludge to the standard, on top of a kludge.
 
-Let's face it: The canonical means to produce implementation files of Modules
-is to use the "module" keyword followed by the name of the module (TU #1).
+Let's face it: The true canonical means to produce implementation files for
+modules is to use the `"module"` keyword ,followed by the name of the module
+(TU `#1`).
 
-We may say that this problem is too small to be of a concern.
+We may say that this problem is too small to be of concern.
 
-But this problem reveals a fundamental flaw in the current design of modules.
-The semantic of translation unit #1 bundles two things together:
+But this problem reveals a fundamental flaw in the current design of modules:
+The current semantic of translation unit `#1` bundles two things together:
 
 1. Signaling an implementation unit of a module
-2. Importing the interface of module
+2. Importing the interface of the module
 
-For module interfaces which don't use partitions, this presents no poblem. But
-it does for interfaces which are aggregates of partitions.
+For module interfaces which don't use partitions, this is not a poblem. But
+it is a problem for interfaces which are aggregates of partitions.
 
 The convenience of implicitly getting the declarations from the interface
 turns into an significant inconvience if the interface is an aggregate
 of partitions.
 
-We might say that partitions are only a marginal use case and this
-inconvenience doesn't need to be fixed. But partitions are an integral
-part of modules in the standard and they do serve a purpose.
+We might say that partitions are only a marginal use case and these
+"inconveniences" do not need to be fixesd. But partitions are an integral
+part of modules in the standard and they do serve an important purpose.
 
-The correct fix for this to attack the root problem and stop implicitly importing
-the interface of module implementation units.
+## Conclusion
+
+The correct fix for this is to attack the root problem and *stop implicitly
+importing the interface* of module implementation units.
 
 Adding yet another kind of partition is the wrong way to solve it.
 
