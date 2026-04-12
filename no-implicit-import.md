@@ -17,7 +17,7 @@ export module M;
 ...
 ```
 
-This presents a problem when we want to split the interface into partitions
+This presents a problem when we want to split the interface into partitions:
 
 ```cpp
 // Translation unit #3
