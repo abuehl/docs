@@ -151,7 +151,8 @@ import M;
 On first impression, this looks like a big inconvenience, but it gives users
 actually more control over what happens.
 
-This would break existing C++ code, but the alternatives are worse.
+This would break existing module implementation C++ code, but the alternatives
+are worse.
 
 Perhaps an additional short-hand could be introduced:
 
