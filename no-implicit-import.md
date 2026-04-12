@@ -91,7 +91,7 @@ example the following syntax:
 
 ```cpp
 // Translation unit #8
-module M:;
+module M:;  // note the colon
 ...
 ```
 
