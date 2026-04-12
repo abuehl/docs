@@ -7,7 +7,7 @@ module M;
 ...
 ```
 
-implicitly imports it interface
+implicitly imports its interface
 
 ```cpp
 export module M;
