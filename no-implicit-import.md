@@ -122,10 +122,6 @@ The convenience of implicitly getting the declarations from the interface
 turns into a significant inconvience if the interface is an aggregate
 of partitions.
 
-We might say that partitions are only a marginal use case and these
-"inconveniences" do not need to be fixesd. But partitions are an integral
-part of the standard and they do serve an important purpose.
-
 ## Conclusion
 
 The correct fix for this is to attack the root cause and *stop implicitly
