@@ -1,4 +1,4 @@
-# Let's bit the bullet: Module Units shouldn't implicitly import anything
+# Let's bite the Bullet: Module Units shouldn't implicitly import anything
 
 Currently, the C++ standard states, that an implementation unit of module `M`
 
