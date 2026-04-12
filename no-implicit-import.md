@@ -119,7 +119,7 @@ interface unit, in order to make the exported declarations available to the
 importers of the module.
 
 The convenience of implicitly getting the declarations from the interface
-turns into a significant inconvience if the interface is an aggregate
+turns into a significant *inconvience* if the interface is an aggregate
 of partitions.
 
 ## Conclusion
