@@ -71,14 +71,16 @@ new problems:
 1. The build creates unused BMI files
 2. Each partition needs a unique name, despite not being used anywhere
 
-`#2` imposes an obligation to the programmer to choose and maintain arbitrary
-names. Compilers are not required to diagnose accidental name clashes. Readers
-of this kind of code aren't immediately aware that those partitions
-aren't intended to be imported anywhere. So this pattern is tedious to write,
-hard to verify for correctness and noisy to read.
+The second point imposes an obligation for the programmer, to choose and maintain
+arbitrary names. Compilers are not required to diagnose accidental name clashes.
+Readers of this kind of code aren't immediately aware that those partitions
+aren't intended to be imported anywhere.
 
-Basically, the sole motivation to use internal partitions here is: Partitions
-do not implicitly import anything.
+So this pattern is tedious to write, hard to verify for correctness and noisy
+to read.
+
+Basically, the sole motivation to use internal partitions in this case is:
+Partitions do not implicitly import anything.
 
 There have been discussions to add yet another type of partition, using for
 example the follwoing syntax:
@@ -89,8 +91,8 @@ module M:;
 ...
 ```
 
-This would be an internal partition that doesn't have a name (an anoymous
-partition).
+This would be an internal partition that doesn't have a name (an "anoymous
+partition").
 
 Basically this would add a kludge to the standard, on top of a kludge.
 
@@ -107,7 +109,10 @@ The current semantic of translation unit `#1` bundles two things together:
 2. Importing the interface of the module
 
 For module interfaces which don't use partitions, this is not a poblem. But
-it is a problem for interfaces which are aggregates of partitions.
+it is a problem for interfaces which are aggregates of partitions. These
+can't be separated, because they do have to be exported from the primary module
+interface unit, in order to make the exported declrations in the partitions
+available to the importers of the module.
 
 The convenience of implicitly getting the declarations from the interface
 turns into a significant inconvience if the interface is an aggregate
@@ -159,4 +164,4 @@ module import M;
 which would combine the import and the module declaration on a single
 line.
 
-However, not importing anything should be the new default.
+However: Not importing anything should be the new default.
