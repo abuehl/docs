@@ -53,6 +53,8 @@ in TU `#4` nor TU `#5`.
 For small toy projects this may be acceptable, but this approach clearly
 doesn't scale, because it causes unneeded recompilations.
 
+## A messy alternative
+
 An alternative is to use "internal partitions":
 
 ```cpp
@@ -86,6 +88,9 @@ to read.
 Basically, the sole motivation to use internal partitions in this case is:
 Partitions do not implicitly import anything.
 
+
+## Yet another partition type?
+
 There have been discussions to add yet another type of partition, using for
 example the following syntax:
 
@@ -106,7 +111,9 @@ modules is to use the `"module"` keyword, followed by the name of the module
 
 We might say that this problem is too small to be of concern.
 
-But this problem reveals a fundamental flaw in the current design of modules:
+## A fundamental flaw
+
+This problem reveals a fundamental flaw in the current design of modules:
 The current semantic of translation unit `#1` bundles two things together:
 
 1. Signaling an implementation unit of a module
