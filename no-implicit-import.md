@@ -33,12 +33,12 @@ we could do
 ```cpp
 // Translation unit #4
 module M;
-// uses nothing from partition :P2
+// uses nothing from :P2
 ...
 
 // Translation unit #5
 module M;
-// uses nothing from partition :P2
+// uses nothing from :P2
 ...
 ```
 
