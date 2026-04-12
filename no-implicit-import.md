@@ -1,6 +1,7 @@
 # Let's bite the Bullet: Module Units shouldn't implicitly import anything
 
-Currently, the C++ standard states, that an implementation unit of module `M`
+Currently, [the C++ standard](https://eel.is/c++draft/module) states, that
+an implementation unit of module `M`
 
 ```cpp
 // Translation unit #1
