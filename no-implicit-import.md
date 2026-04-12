@@ -17,6 +17,8 @@ export module M;
 ...
 ```
 
+## The problem
+
 This presents a problem when we want to split the interface into partitions:
 
 ```cpp
