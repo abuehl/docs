@@ -33,18 +33,16 @@ we could do
 ```cpp
 // Translation unit #4
 module M;
-import :P1;
 ...
 
 // Translation unit #5
 module M;
-import :P1;
 ...
 ```
 
 The problem with this is, that if the partition unit `:P2` is modified,
 translation units `#4` and `#5` also need to be recompiled, because they
-both implicitly import TU `#3`, even though `:P2` is not imported neither
+both implicitly import TU `#3`, even though `:P2` is not needed neither
 in TU `#4` nor TU `#5`.
 
 For small toy projects this may be acceptable, but this approach clearly
