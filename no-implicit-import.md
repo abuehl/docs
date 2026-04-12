@@ -87,7 +87,7 @@ Basically, the sole motivation to use internal partitions in this case is:
 Partitions do not implicitly import anything.
 
 There have been discussions to add yet another type of partition, using for
-example the follwoing syntax:
+example the following syntax:
 
 ```cpp
 // Translation unit #8
