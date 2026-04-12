@@ -1,7 +1,7 @@
 # Let's bite the Bullet: Module Units shouldn't implicitly import anything
 
 Currently, [the C++ standard](https://eel.is/c++draft/module) states, that
-an implementation unit of module `M`
+an implementation unit of the following form:
 
 ```cpp
 // Translation unit #1
@@ -9,7 +9,7 @@ module M;
 ...
 ```
 
-implicitly imports its interface
+*implicitly imports* its interface
 
 ```cpp
 // Translation unit #2
