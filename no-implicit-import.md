@@ -63,7 +63,7 @@ import :P1;
 ...
 ```
 
-Note: Partitions `:impl.P1.A`  and `:impl.P1.B` aren't imported anywhere. 
+*Note: Partitions `:impl.P1.A`  and `:impl.P1.B` aren't imported anywhere.*
 
 Using this pattern avoids unneeded recompilations, but it adds the following
 new problems:
