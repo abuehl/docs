@@ -115,8 +115,8 @@ The current semantic of translation unit `#1` bundles two things together:
 For module interfaces which don't use partitions, this is not a poblem. But
 it is a problem for interfaces which are aggregates of partitions. These
 can't be separated, because they do have to be exported from the primary module
-interface unit, in order to make the exported declarations from the partitions
-available to the importers of the module.
+interface unit, in order to make the exported declarations available to the
+importers of the module.
 
 The convenience of implicitly getting the declarations from the interface
 turns into a significant inconvience if the interface is an aggregate
