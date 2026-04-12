@@ -104,7 +104,7 @@ Let's face it: The true canonical means to produce implementation files for
 modules is to use the `"module"` keyword, followed by the name of the module
 (TU `#1`).
 
-We may say that this problem is too small to be of concern.
+We might say that this problem is too small to be of concern.
 
 But this problem reveals a fundamental flaw in the current design of modules:
 The current semantic of translation unit `#1` bundles two things together:
