@@ -195,7 +195,7 @@ line.
 
 However: Not importing anything should be the new default.
 
-Translation units `#1b` (and `#1c`) separate concerns: `"module M;"` tells us,
+Translation unit `#1b` separates concerns: `"module M;"` tells us,
 where the definitions that follow are attached to, whereas the separate
 import(s) tell us, which declarations we need to implement the functions that
 follow. 
