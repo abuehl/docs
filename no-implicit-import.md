@@ -162,7 +162,7 @@ Adding yet another kind of partition is the wrong way to solve it.
 Users would have to change:
 
 ```cpp
-// Translation unit #7
+// Translation unit #1
 module M;
 ...
 ```
@@ -170,7 +170,7 @@ module M;
 to
 
 ```cpp
-// Translation unit #7b
+// Translation unit #1b
 module M;
 import M;
 ...
@@ -179,13 +179,13 @@ import M;
 On first impression, this looks like a big inconvenience, but it gives users
 actually more control over what happens.
 
-This would break existing module implementation C++ code, but the alternatives
+This would break existing module *implementation* C++ code, but the alternatives
 are worse.
 
 Perhaps an additional short-hand could be introduced for convenience:
 
 ```cpp
-// Translation unit #7c
+// Translation unit #1c
 module import M;
 ...
 ```
@@ -195,10 +195,10 @@ line.
 
 However: Not importing anything should be the new default.
 
-Translation units `#7b` (and `#7c`) separate concerns: `"module M;"` tells us,
+Translation units `#1b` (and `#1c`) separate concerns: `"module M;"` tells us,
 where the definitions that follow are attached to, whereas the separate
-import(s) tell us, which declarations we need to implement the functions
-in that unit. 
+import(s) tell us, which declarations we need to implement the functions that
+follow. 
 
 (last edited: 2026-04-13)
 
