@@ -52,8 +52,27 @@ translation units `#4` and `#5` also need to be recompiled, because they
 both implicitly import TU `#3`, even though `:P2` is not needed neither
 in TU `#4` nor TU `#5`.
 
-For small toy projects this may be acceptable, but this approach clearly
+For small enough projects, this may be acceptable, but this approach clearly
 doesn't scale, because it causes unneeded recompilations.
+
+Note that it is tempting to write:
+
+```cpp
+// Translation unit #4a
+module M;
+import :P1;
+// uses nothing from :P2
+...
+
+// Translation unit #5a
+module M;
+import :P1;
+// uses nothing from :P2
+...
+```
+
+which is not incorrect, but redundant today (:P2 is already implicitly
+imported).
 
 ## A messy alternative
 
@@ -111,21 +130,21 @@ Let's face it: The true canonical means to produce implementation files for
 modules is to use the `"module"` keyword, followed by the name of the module
 (TU `#1`).
 
-We might say that this problem is too small to be of concern.
-
 ## A fundamental flaw
 
-This problem reveals a fundamental flaw in the current design of modules:
+We might say that the problem presented above here is too small to be of
+concern. But it reveals a fundamental flaw in the current design of modules.
+
 The current semantic of translation unit `#1` bundles two things together:
 
 1. Signaling an implementation unit of a module
 2. Importing the interface of the module
 
-For module interfaces which don't use partitions, this is not a poblem. But
-it is a problem for interfaces which are aggregates of partitions. These
-can't be separated, because they do have to be exported from the primary module
-interface unit, in order to make the exported declarations available to the
-importers of the module.
+For module interfaces which don't export partitions, this is not a poblem. But
+it is a problem for interfaces which do so. These partitions can't be separated,
+because they *do* have to be exported from the primary module interface unit,
+in order to make the exported declarations available to the importers of the
+module.
 
 The convenience of implicitly getting the declarations from the interface
 turns into a significant *inconvience* if the interface is an aggregate
@@ -133,8 +152,8 @@ of partitions.
 
 ## Conclusion
 
-The correct fix for this is to attack the root cause and *stop implicitly
-importing the interface* of module implementation units.
+The correct fix for this is to attack the root cause and stop *implicitly*
+importing the interface of module implementation units.
 
 Adding yet another kind of partition is the wrong way to solve it.
 
@@ -175,3 +194,11 @@ which would combine the import and the module declaration on a single
 line.
 
 However: Not importing anything should be the new default.
+
+Translation units #10 (and #11) separate concerns. `"module M;"` tells us,
+where the definitions that follow are attached to, whereas the separate
+import(s) tell us, which declarations we need to implement the functions
+in that unit. 
+
+(last edited: 2026-04-13)
+
