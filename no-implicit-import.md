@@ -71,7 +71,7 @@ import :P1;
 ...
 ```
 
-which is not incorrect, but redundant today (`:P2` is already implicitly
+which is not incorrect, but redundant today (`:P1` is already implicitly
 imported today).
 
 ## A messy alternative
