@@ -71,20 +71,20 @@ import :P1;
 ...
 ```
 
-which is not incorrect, but redundant today (:P2 is already implicitly
-imported).
+which is not incorrect, but redundant today (`:P2` is already implicitly
+imported today).
 
 ## A messy alternative
 
 An alternative is to use "internal partitions":
 
 ```cpp
-// Translation unit #6
+// Translation unit #4b
 module M:impl.P1.A;
 import :P1;
 ...
 
-// Translation unit #7
+// Translation unit #5b
 module M:impl.P1.B;
 import :P1;
 ...
@@ -106,7 +106,7 @@ aren't intended to be imported anywhere.
 So this pattern is tedious to write, hard to verify for correctness and noisy
 to read.
 
-Basically, the sole motivation to use internal partitions in this case is:
+Basically, the sole reason to use internal partitions in this case is:
 Partitions do not implicitly import anything.
 
 
@@ -116,7 +116,7 @@ There have been discussions to add yet another type of partition, using for
 example the following syntax:
 
 ```cpp
-// Translation unit #8
+// Translation unit #6
 module M:; // note the colon
 ...
 ```
@@ -162,7 +162,7 @@ Adding yet another kind of partition is the wrong way to solve it.
 Users would have to change:
 
 ```cpp
-// Translation unit #9
+// Translation unit #7
 module M;
 ...
 ```
@@ -170,7 +170,7 @@ module M;
 to
 
 ```cpp
-// Translation unit #10
+// Translation unit #7b
 module M;
 import M;
 ...
@@ -182,10 +182,10 @@ actually more control over what happens.
 This would break existing module implementation C++ code, but the alternatives
 are worse.
 
-Perhaps an additional short-hand could be introduced:
+Perhaps an additional short-hand could be introduced for convenience:
 
 ```cpp
-// Translation unit #11
+// Translation unit #7c
 module import M;
 ...
 ```
@@ -195,7 +195,7 @@ line.
 
 However: Not importing anything should be the new default.
 
-Translation units #10 (and #11) separate concerns. `"module M;"` tells us,
+Translation units `#7b` (and `#7c`) separate concerns: `"module M;"` tells us,
 where the definitions that follow are attached to, whereas the separate
 import(s) tell us, which declarations we need to implement the functions
 in that unit. 
