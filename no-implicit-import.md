@@ -9,7 +9,7 @@ module M;
 ...
 ```
 
-*implicitly imports* its interface
+*implicitly imports* its interface:
 
 ```cpp
 // Translation unit #2
@@ -30,7 +30,7 @@ export import :P2;
 ```
 
 Assuming we want to separate implementations of functions declared in `:P1`,
-we could do
+we could do:
 
 ```cpp
 // Translation unit #4
