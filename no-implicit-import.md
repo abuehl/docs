@@ -182,7 +182,7 @@ actually more control over what happens.
 This would break existing module *implementation* C++ code, but the alternatives
 are worse.
 
-Perhaps an additional short-hand could be introduced for convenience:
+Perhaps an additional short-hand syntax could be introduced for convenience:
 
 ```cpp
 // Translation unit #1c
