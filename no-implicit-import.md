@@ -4,7 +4,7 @@ Currently, [the C++ standard](https://eel.is/c++draft/module) states, that
 an implementation unit of the following form:
 
 ```cpp
-// Translation unit #1
+// Translation unit #1a
 module M;
 ...
 ```
@@ -33,24 +33,24 @@ Assuming we want to separate implementations of functions declared in `:P1`,
 we could do:
 
 ```cpp
-// Translation unit #4
+// Translation unit #4a
 module M;
 // uses nothing from :P2
 ...
 
-// Translation unit #5
+// Translation unit #5a
 module M;
 // uses nothing from :P2
 ...
 ```
 
-*Note: Translation units `#4` and `#5` do not use any declarations from
+*Note: Translation units `#4a` and `#5a` do not use any declarations from
 partition `:P2`*
 
 The problem with this is, that if the partition unit `:P2` is modified,
-translation units `#4` and `#5` also need to be recompiled, because they
+translation units `#4a` and `#5a` also need to be recompiled, because they
 both implicitly import TU `#3`, even though `:P2` is not needed neither
-in TU `#4` nor TU `#5`.
+in TU `#4a` nor TU `#5a`.
 
 For small enough projects, this may be acceptable, but this approach clearly
 doesn't scale, because it causes unneeded recompilations.
@@ -58,13 +58,13 @@ doesn't scale, because it causes unneeded recompilations.
 Note that it is tempting to write:
 
 ```cpp
-// Translation unit #4a
+// Translation unit #4b
 module M;
 import :P1;
 // uses nothing from :P2
 ...
 
-// Translation unit #5a
+// Translation unit #5b
 module M;
 import :P1;
 // uses nothing from :P2
@@ -79,12 +79,12 @@ imported today).
 An alternative is to use "internal partitions":
 
 ```cpp
-// Translation unit #4b
+// Translation unit #6
 module M:impl.P1.A;
 import :P1;
 ...
 
-// Translation unit #5b
+// Translation unit #7
 module M:impl.P1.B;
 import :P1;
 ...
@@ -116,7 +116,7 @@ There have been discussions to add yet another type of partition, using for
 example the following syntax:
 
 ```cpp
-// Translation unit #6
+// Translation unit #8
 module M:; // note the colon
 ...
 ```
@@ -128,16 +128,16 @@ Basically this would add a kludge to the standard, on top of a kludge.
 
 Let's face it: The true canonical means to produce implementation files for
 modules is to use the `"module"` keyword, followed by the name of the module
-(TU `#1`).
+(TU `#1a`).
 
 ## A fundamental flaw
 
-We might say that the problem presented above here is too small to be of
+We might say that the problem presented above is too small to be of
 concern. But it reveals a fundamental flaw in the current design of modules.
 
-The current semantic of translation unit `#1` bundles two things together:
+The current semantics of translation unit `#1a` bundles two things together:
 
-1. Signaling an implementation unit of a module
+1. Defining an implementation unit of a module
 2. Importing the interface of the module
 
 For module interfaces which don't export partitions, this is not a poblem. But
@@ -147,7 +147,7 @@ in order to make the exported declarations available to the importers of the
 module.
 
 The convenience of implicitly getting the declarations from the interface
-turns into a significant *inconvience* if the interface is an aggregate
+turns into a significant *inconvience* if the interface is an aggregation
 of partitions.
 
 ## Conclusion
@@ -162,7 +162,7 @@ Adding yet another kind of partition is the wrong way to solve it.
 Users would have to change:
 
 ```cpp
-// Translation unit #1
+// Translation unit #1a
 module M;
 ...
 ```
