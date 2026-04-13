@@ -49,7 +49,7 @@ partition `:P2`*
 
 The problem with this is, that if the partition unit `:P2` is modified,
 translation units `#4a` and `#5a` also need to be recompiled, because they
-both implicitly import TU `#3`, even though `:P2` is not needed neither
+both implicitly import TU `#3`, even though nothing from `:P2` is used neither
 in TU `#4a` nor TU `#5a`.
 
 For small enough projects, this may be acceptable, but this approach clearly
