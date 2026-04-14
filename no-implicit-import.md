@@ -48,9 +48,9 @@ module M;
 partition `:P2`*
 
 The problem with this is, that if the partition unit `:P2` is modified,
-translation units `#4a` and `#5a` also need to be recompiled, because they
-both implicitly import TU `#3`, even though nothing from `:P2` is used neither
-in TU `#4a` nor TU `#5a`.
+translation units #4a and #5a also need to be recompiled, because they
+both implicitly import TU #3, even though nothing from `:P2` is used neither
+in TU #4a nor TU #5a.
 
 For small enough projects, this may be acceptable, but this approach clearly
 doesn't scale, because it causes unneeded recompilations.
@@ -152,14 +152,14 @@ doesn't implicitly import the interface of the module.
 
 Let's face it: The true canonical means to produce implementation files for
 modules is to use the `"module"` keyword, followed by the name of the module
-(TU `#1a`).
+(TU #1a).
 
 ## A fundamental flaw
 
 We might say that the problem presented above is too small to be of
 concern. But it reveals a fundamental flaw in the current design of modules.
 
-The current semantics of translation unit `#1a` bundles two things together:
+The current semantics of translation unit #1a bundles two things together:
 
 1. Defining an implementation unit of a module
 2. Importing the interface of the module
@@ -217,7 +217,7 @@ line.
 
 However: Not importing anything should be the new default.
 
-Translation unit `#1b` separates concerns: `"module M;"` tells us,
+Translation unit #1b separates concerns: `"module M;"` tells us,
 where the definitions that follow are attached to, whereas the separate
 import(s) tell us, which declarations we need to implement the functions that
 follow. 
