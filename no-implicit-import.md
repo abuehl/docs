@@ -113,7 +113,7 @@ Partitions do not implicitly import anything.
 ## Yet another partition type?
 
 There have been discussions to add yet another type of partition, using for
-example the following syntax:
+example the following new syntax:
 
 ```cpp
 // Translation unit #8
@@ -124,7 +124,28 @@ module M:; // note the colon
 This would be an internal partition that doesn't have a name (an "anoymous
 partition").
 
-Basically this would add a kludge to the standard, on top of a kludge.
+This would *not* implicitly import the interface of module `M` and allow to
+write:
+
+```cpp
+// Translation unit #9
+module M:;
+import :P1;
+...
+
+// Translation unit #10
+module M:;
+import :P1;
+...
+```
+
+Translation units `#9` and `#10` would not need to be recompiled, if partition
+`:P2` is modified. Resorting to the messy internal partition trick would no
+longer be needed.
+
+This new syntax would be an improvement over the status quo, but it would add yet
+another partition type to the standard, without fixing the root problem, which is
+that `module M;` implicitly imports its interface.
 
 Let's face it: The true canonical means to produce implementation files for
 modules is to use the `"module"` keyword, followed by the name of the module
@@ -154,8 +175,6 @@ of partitions.
 
 The correct fix for this is to attack the root cause and stop *implicitly*
 importing the interface of module implementation units.
-
-Adding yet another kind of partition is the wrong way to solve it.
 
 ## Implications
 
@@ -200,5 +219,5 @@ where the definitions that follow are attached to, whereas the separate
 import(s) tell us, which declarations we need to implement the functions that
 follow. 
 
-(last edited: 2026-04-13)
+(last edited: 2026-04-14)
 
