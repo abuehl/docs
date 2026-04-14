@@ -140,12 +140,15 @@ import :P1;
 ```
 
 Translation units `#9` and `#10` would not need to be recompiled, if partition
-`:P2` is modified. Resorting to the messy internal partition trick would no
-longer be needed.
+`:P2` is modified. Resorting to the messy internal partition trick (TU #6 and #7)
+would no longer be needed.
 
 This new syntax would be an improvement over the status quo, but it would add yet
 another partition type to the standard, without fixing the root problem, which is
 that `module M;` implicitly imports its interface.
+
+The sole purpose of this new syntax would be to have an implementation unit which
+doesn't implicitly import the interface of the module.
 
 Let's face it: The true canonical means to produce implementation files for
 modules is to use the `"module"` keyword, followed by the name of the module
