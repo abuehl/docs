@@ -9,7 +9,7 @@ module M;
 ...
 ```
 
-*implicitly imports* its interface:
+[*implicitly imports* its interface](https://eel.is/c++draft/module#unit-8):
 
 ```cpp
 // Translation unit #2
