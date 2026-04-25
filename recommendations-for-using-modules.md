@@ -23,7 +23,7 @@ However, usage of partitions should be limited to cases where you
 really need them. If you must use them, keep the resulting module small.
 
 Large modules with a large number of partitions cause a lot of
-recompilations, of an inteterface partition changes.
+recompilations, of an interface partition changes.
 
 ### Avoid using internal partitions
 
