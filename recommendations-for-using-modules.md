@@ -23,7 +23,14 @@ However, usage of partitions should be limited to cases where you
 really need them. If you must use them, keep the resulting module small.
 
 Large modules with a large number of partitions cause a lot of
-recompilations, of an interface partition changes.
+recompilations, if an interface partition changes. Because implementation
+units ("module M;") implicitly import the whole aggregated interface
+of the module.
+
+Don't use the
+[internal partition anti-pattern](https://abuehl.github.io/2026/04/22/an-anti-pattern-for-modules.html).
+
+Instead prefer to compose modules of smaller ones.
 
 ### Avoid using internal partitions
 
