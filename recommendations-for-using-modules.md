@@ -3,7 +3,7 @@
 ### Prefer small modules
 
 I've tried using large modules, but I haven't see faster builds when doing
-full builds with large modules. The build time for full build stays roughly
+full builds with large modules. The build time for a full build stays roughly
 the same with more, but smaller modules.
 
 More but smaller modules provider faster rebilds when something changes.
