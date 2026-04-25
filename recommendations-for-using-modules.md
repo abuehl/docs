@@ -19,7 +19,7 @@ have a pointer or a reference to a class declared in module M,
 you need to import M.
 
 However, usage of partitions should be limited to cases where you
-really need them. If you must, keep the resulting module small.
+really need them. If you must use them, keep the resulting module small.
 
 Large modules with a large number of partitions cause a lot of
 recompilations, of an inteterface partition changes.
