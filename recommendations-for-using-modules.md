@@ -8,6 +8,9 @@ the same with more, but smaller modules.
 
 More but smaller modules provider faster rebilds when something changes.
 
+Don't be afraid of occasionally having a module with just one or two classes.
+That's fine.
+
 ### Only use partitions if you really must
 
 Partitions provide the advantage, that you can forward declare classes
