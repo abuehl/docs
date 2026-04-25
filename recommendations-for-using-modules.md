@@ -15,7 +15,7 @@ That's fine.
 
 Partitions provide the advantage, that you can forward declare classes
 across partition boundaries. This isn't possible with modules. If you
-have a pointer or a reference to an object delcared in module M,
+have a pointer or a reference to an object declared in module M,
 you need to import M.
 
 However, usage of partitions should be limited to cases where you
