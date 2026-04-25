@@ -6,11 +6,11 @@ I've tried using large modules, but I haven't see faster builds when doing
 full builds with large modules. The build time for full build stays roughly
 the same with more, but smaller modules.
 
-More but smaller modules provider faster rubilds when something changes.
+More but smaller modules provider faster rebilds when something changes.
 
 ### Only use partitions if you really must
 
-Partitions provide the advantage, that you can forward delcare classes
+Partitions provide the advantage, that you can forward declare classes
 across partition boundaries. This isn't possible with modules. If you
 have a pointer or a reference to an object delcared in module M,
 you need to import M.
@@ -23,7 +23,7 @@ recompilations, of an inteterface partition changes.
 
 ### Avoid using internal partitions
 
-Prefer using modules. Compose a larger module of smaller ones.
+Prefer using modules instead. Compose larger modules of smaller ones.
 Don't try to use internal partitions for hiding purposes. It's no
 problem to create a module which is only intended for internal
 use.
