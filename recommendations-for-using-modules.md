@@ -6,7 +6,8 @@ I've tried using large modules, but I haven't seen faster builds when doing
 full builds with large modules. The build time for a full build stays roughly
 the same with more, but smaller modules.
 
-More but smaller modules provide faster rebuilds when something changes.
+More but smaller modules provide faster rebuilds when something changes,
+because a smaller number of dependent translation units is affected.
 
 Don't be afraid of occasionally having a module with just one or two classes.
 That's fine.
