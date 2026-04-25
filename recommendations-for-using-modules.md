@@ -2,7 +2,7 @@
 
 ### Prefer small modules
 
-I've tried using large modules, but I haven't see faster builds when doing
+I've tried using large modules, but I haven't seen faster builds when doing
 full builds with large modules. The build time for a full build stays roughly
 the same with more, but smaller modules.
 
