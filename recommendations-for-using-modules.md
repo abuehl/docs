@@ -2,7 +2,7 @@
 
 ### Prefer small modules
 
-I've tried using large modules, but I haven't seen faster builds when doing
+We've tried using large modules, but we haven't seen faster builds when doing
 full builds with large modules. The build time for a full build stays roughly
 the same with more, but smaller modules.
 
@@ -37,4 +37,4 @@ Don't try to use internal partitions for hiding purposes. It's no
 problem to create a module which is only intended for internal
 use.
 
-(last edited: 2026-04-25)
+(last edited: 2026-04-26)
