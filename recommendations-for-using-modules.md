@@ -30,11 +30,10 @@ of the module. Don't use the
 
 Instead prefer to compose modules of smaller ones.
 
-### Avoid using internal partitions
+### Only use internal partitions if you really must
 
 Prefer using modules instead. Compose larger modules of smaller ones.
-Don't try to use internal partitions for hiding purposes. It's no
-problem to create a module which is only intended for internal
+It's no problem to create a module which is only intended for internal
 use.
 
-(last edited: 2026-04-26)
+(last edited: 2026-06-13)
